@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World with CSS & JS</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            background-color: #f2f2f2;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: blue;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="msg">Hello World</h1>
+
+    <button onclick="changeText()">Click Me</button>
+
+    <!-- JavaScript -->
+    <script>
+        function changeText() {
+            document.getElementById("msg").innerHTML = "Hello from JavaScript!";
+        }
+    </script>
+
+</body>
+</html>
