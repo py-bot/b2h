@@ -1,38 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hello World with CSS & JS</title>
+  <meta charset="UTF-8">
+  <title>My Python Learning Journey</title>
 
-    <!-- CSS -->
-    <style>
-        body {
-            background-color: #f2f2f2;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            color: blue;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #020617;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    section {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      color: #38bdf8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
 
-    <h1 id="msg">Hello World</h1>
+  <header>
+    <h1>🐍 Python Learning Log</h1>
+    <p>Learning in public — step by step</p>
+  </header>
 
-    <button onclick="changeText()">Click Me</button>
+  <section id="content">
+    <div class="card">
+      <h2>Day 1: Hello World</h2>
+      <pre>
+print("Hello, World!")
+      </pre>
+    </div>
 
-    <!-- JavaScript -->
-    <script>
-        function changeText() {
-            document.getElementById("msg").innerHTML = "Hello from JavaScript!";
-        }
-    </script>
+
+<div class="card">
+  <h2>Day 2: Variables</h2>
+  <pre>
+x = 10
+name = "Python"
+print(x, name)
+  </pre>
+</div>
+
+
+
+
+
+
+      
+  </section>
+
+  <footer>
+    © 2026 • Built with GitHub Pages
+  </footer>
 
 </body>
 </html>
