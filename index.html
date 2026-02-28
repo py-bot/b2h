@@ -2,166 +2,163 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Python Learning – Vishvjit Goswami</title>
+<title>Learn Python – Step by Step</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{
-  margin:0;
-  font-family:system-ui;
-  background:#020617;
-  color:#e5e7eb;
-}
-header{
-  padding:14px;
-  border-bottom:1px solid #1e293b;
-}
-h2{margin:0}
+body{margin:0;font-family:system-ui;background:#020617;color:#e5e7eb}
+header{padding:14px;border-bottom:1px solid #1e293b}
 .container{padding:16px}
-
-/* TOPIC LIST */
-.topic{
-  border:1px solid #1e293b;
-  border-radius:8px;
-  padding:14px;
-  margin-bottom:12px;
-  cursor:pointer;
-  background:#020617;
-}
+.topic{border:1px solid #1e293b;border-radius:8px;padding:14px;margin-bottom:12px;cursor:pointer}
 .topic:hover{border-color:#38bdf8}
 
-/* CONTENT PAGE */
-.content{
-  display:none;
-}
-pre{
-  background:#020617;
-  border:1px solid #1e293b;
-  padding:12px;
-  overflow-x:auto;
-}
-button{
-  background:#38bdf8;
-  border:none;
-  padding:8px 14px;
-  border-radius:6px;
-  font-weight:600;
-  cursor:pointer;
-  margin-bottom:14px;
-}
-.copy{
-  float:right;
-  padding:4px 8px;
-}
+.content{display:none}
+.section{margin-bottom:20px}
+.example{border:1px solid #1e293b;border-radius:8px;padding:12px;margin-top:12px}
+pre{background:#020617;border:1px solid #1e293b;padding:12px;overflow-x:auto}
+button{background:#38bdf8;border:none;padding:8px 14px;border-radius:6px;font-weight:600;cursor:pointer}
+.copy{float:right;padding:4px 8px;font-size:12px}
+.back{margin-bottom:16px}
+p{line-height:1.6;color:#cbd5f5}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>🐍 Python Topics (Click to Learn)</h2>
+<h2>🐍 Learn Python (For Real Learning)</h2>
+<p>Click a topic → understand → practice</p>
 </header>
 
+<!-- TOPIC LIST -->
 <div class="container" id="topicList">
-
-  <div class="topic" onclick="openTopic('hello')">Hello World</div>
   <div class="topic" onclick="openTopic('variables')">Variables & Data Types</div>
-  <div class="topic" onclick="openTopic('input')">Input / Output</div>
   <div class="topic" onclick="openTopic('ifelse')">If Else</div>
   <div class="topic" onclick="openTopic('loops')">Loops</div>
-  <div class="topic" onclick="openTopic('list')">List</div>
-  <div class="topic" onclick="openTopic('tuple')">Tuple</div>
-  <div class="topic" onclick="openTopic('set')">Set</div>
-  <div class="topic" onclick="openTopic('dict')">Dictionary</div>
   <div class="topic" onclick="openTopic('function')">Functions</div>
-  <div class="topic" onclick="openTopic('oop')">OOP</div>
-  <div class="topic" onclick="openTopic('file')">File Handling</div>
-  <div class="topic" onclick="openTopic('exception')">Exception Handling</div>
-
 </div>
 
-<!-- CONTENT SECTIONS -->
+<!-- CONTENT -->
 <div class="container content" id="content">
+  <button class="back" onclick="goBack()">⬅ Back</button>
+  <h2 id="title"></h2>
 
-<button onclick="goBack()">⬅ Back to Topics</button>
+  <div class="section">
+    <h3>📘 Concept</h3>
+    <p id="concept"></p>
+  </div>
 
-<h2 id="title"></h2>
-<button class="copy" onclick="copyCode()">Copy</button>
-<pre id="code"></pre>
+  <div class="section">
+    <h3>🧠 Why it matters</h3>
+    <p id="why"></p>
+  </div>
 
+  <div class="section">
+    <h3>🧪 Examples</h3>
+    <div id="examples"></div>
+  </div>
 </div>
 
 <script>
-const data={
-  hello:`print("Hello World")`,
+const data = {
+  variables: {
+    title: "Variables & Data Types",
+    concept: "Variable ek container hota hai jisme hum data store karte hain. Python me variable banane ke liye data type likhna zaruri nahi hota.",
+    why: "Programming me data ko store, update aur reuse karne ke liye variables sabse important hote hain.",
+    examples: [
+      {
+        name: "Basic Variable",
+        code: `x = 10\nname = "Python"\nprint(x, name)`,
+        explain: "Yahan x me number aur name me text store kiya gaya hai."
+      },
+      {
+        name: "Check Data Type",
+        code: `x = 10\nprint(type(x))`,
+        explain: "type() function batata hai variable ka data type."
+      }
+    ]
+  },
 
-  variables:`x = 10
-y = 2.5
-name = "Python"
-is_ok = True`,
+  ifelse: {
+    title: "If Else",
+    concept: "If else ka use decision lene ke liye hota hai. Agar condition true hui to if ka code chalega warna else ka.",
+    why: "Real life decisions (marks, age, login) sab if-else se handle hote hain.",
+    examples: [
+      {
+        name: "Simple If",
+        code: `x = 5\nif x > 3:\n    print("Greater than 3")`,
+        explain: "Condition true hai isliye print chala."
+      },
+      {
+        name: "If Else",
+        code: `x = 2\nif x > 3:\n    print("Greater")\nelse:\n    print("Smaller")`,
+        explain: "Condition false hone par else execute hota hai."
+      }
+    ]
+  },
 
-  input:`name = input("Enter name: ")
-print("Hello", name)`,
+  loops: {
+    title: "Loops",
+    concept: "Loop ka use same kaam ko bar-bar repeat karne ke liye hota hai.",
+    why: "Manual repeat karna possible nahi hota jab kaam 100 ya 1000 baar ho.",
+    examples: [
+      {
+        name: "For Loop",
+        code: `for i in range(3):\n    print(i)`,
+        explain: "range(3) matlab 0 se 2 tak loop chalega."
+      },
+      {
+        name: "While Loop",
+        code: `i = 1\nwhile i <= 3:\n    print(i)\n    i += 1`,
+        explain: "Condition true rahegi tab tak loop chalega."
+      }
+    ]
+  },
 
-  ifelse:`x = 5
-if x > 3:
-    print("Greater")
-else:
-    print("Smaller")`,
-
-  loops:`for i in range(5):
-    print(i)
-
-i = 1
-while i <= 3:
-    print(i)
-    i += 1`,
-
-  list:`nums = [1,2,3]
-nums.append(4)`,
-
-  tuple:`t = (1,2,3)`,
-
-  set:`s = {1,2,3}`,
-
-  dict:`d = {"a":1,"b":2}`,
-
-  function:`def add(a,b):
-    return a+b
-
-print(add(3,4))`,
-
-  oop:`class Person:
-    def __init__(self,name):
-        self.name=name
-
-p = Person("Ram")`,
-
-  file:`with open("test.txt","w") as f:
-    f.write("Hello")`,
-
-  exception:`try:
-    x = 1/0
-except Exception as e:
-    print(e)`
+  function: {
+    title: "Functions",
+    concept: "Function ek reusable block hota hai jo ek kaam karta hai.",
+    why: "Code repeat hone se bachata hai aur program clean banta hai.",
+    examples: [
+      {
+        name: "Create Function",
+        code: `def add(a, b):\n    return a + b`,
+        explain: "add function do numbers ko jodta hai."
+      },
+      {
+        name: "Call Function",
+        code: `print(add(3, 4))`,
+        explain: "Function ko call karke result print kiya."
+      }
+    ]
+  }
 };
 
 function openTopic(key){
-  document.getElementById("topicList").style.display="none";
-  document.getElementById("content").style.display="block";
-  document.getElementById("title").innerText=key.toUpperCase();
-  document.getElementById("code").innerText=data[key];
+  topicList.style.display="none";
+  content.style.display="block";
+
+  const t = data[key];
+  title.innerText = t.title;
+  concept.innerText = t.concept;
+  why.innerText = t.why;
+
+  examples.innerHTML="";
+  t.examples.forEach(ex=>{
+    examples.innerHTML += `
+      <div class="example">
+        <b>${ex.name}</b>
+        <button class="copy" onclick="navigator.clipboard.writeText(\`${ex.code}\`)">Copy</button>
+        <pre>${ex.code}</pre>
+        <p>👉 ${ex.explain}</p>
+      </div>
+    `;
+  });
 }
 
 function goBack(){
-  document.getElementById("content").style.display="none";
-  document.getElementById("topicList").style.display="block";
-}
-
-function copyCode(){
-  navigator.clipboard.writeText(
-    document.getElementById("code").innerText
-  );
+  content.style.display="none";
+  topicList.style.display="block";
 }
 </script>
 
