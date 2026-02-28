@@ -2,245 +2,260 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Complete Python Learning Blog</title>
+<title>Python Learning – Vishvjit Goswami</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
---bg:#0f172a;--card:#020617;--text:#e5e7eb;
---accent:#38bdf8;--border:#1e293b}
-.light{
---bg:#f8fafc;--card:#ffffff;--text:#020617;--border:#cbd5e1}
-body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);display:flex}
-nav{width:240px;position:fixed;height:100vh;overflow:auto;
-background:var(--card);border-right:1px solid var(--border);padding:16px}
-nav h3{margin-top:0;color:var(--accent)}
-nav a{display:block;color:var(--text);font-size:13px;margin-bottom:6px;text-decoration:none}
-nav a:hover{color:var(--accent)}
-main{margin-left:240px;padding:20px;max-width:1000px}
-header h1{margin:0;color:var(--accent)}
-#search{width:100%;max-width:420px;padding:10px;margin:10px 0;
-background:var(--card);border:1px solid var(--border);color:var(--text)}
-#tags button,#themeToggle{
-margin:4px;padding:6px 12px;border-radius:20px;
-border:1px solid var(--border);background:var(--card);color:var(--text)}
-#tags button:hover,#themeToggle:hover{background:var(--accent);color:#020617}
-#progress{height:8px;background:var(--border);border-radius:10px;margin:12px 0}
-#bar{height:100%;width:0;background:var(--accent);border-radius:10px}
-.card{background:var(--card);border:1px solid var(--border);
-border-radius:8px;padding:16px;margin-bottom:20px}
-.card h2{margin-top:0;color:var(--accent)}
-pre{background:var(--bg);padding:12px;border-radius:6px;overflow:auto;position:relative}
-.copy{position:absolute;top:8px;right:8px;background:var(--accent);
-border:none;padding:4px 8px;border-radius:4px;font-size:12px;cursor:pointer}
-footer{text-align:center;margin:40px 0;font-size:14px;color:#94a3b8}
-@media(max-width:800px){nav{display:none}main{margin-left:0}}
+/* ========== BASE ========== */
+body{
+  margin:0;
+  font-family:system-ui, sans-serif;
+  background:#020617;
+  color:#e5e7eb;
+}
+a{color:#38bdf8;text-decoration:none}
+h2{margin-top:0}
+
+/* ========== LAYOUT ========== */
+header{
+  position:sticky;top:0;
+  background:#020617;
+  padding:12px;
+  border-bottom:1px solid #1e293b;
+  z-index:100;
+}
+.container{
+  display:flex;
+}
+.sidebar{
+  width:240px;
+  padding:15px;
+  border-right:1px solid #1e293b;
+}
+main{
+  flex:1;
+  padding:15px;
+}
+
+/* ========== MOBILE ========== */
+@media(max-width:768px){
+  .container{flex-direction:column}
+  .sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid #1e293b;
+  }
+}
+
+/* ========== SEARCH + TAGS ========== */
+.search-box{
+  width:100%;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid #1e293b;
+  background:#020617;
+  color:#e5e7eb;
+}
+.tags{
+  display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;
+}
+.tag{
+  padding:4px 10px;
+  border-radius:20px;
+  border:1px solid #38bdf8;
+  font-size:12px;
+  cursor:pointer;
+}
+.tag.active{background:#38bdf8;color:#020617}
+
+/* ========== CARD ========== */
+.card{
+  background:#020617;
+  border:1px solid #1e293b;
+  border-radius:8px;
+  padding:14px;
+  margin-bottom:14px;
+}
+pre{
+  background:#020617;
+  border:1px solid #1e293b;
+  padding:10px;
+  overflow-x:auto;
+  font-size:13px;
+}
+.copy{
+  float:right;
+  background:#38bdf8;
+  border:none;
+  padding:4px 8px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+/* ========== TOC ========== */
+#toc a{
+  display:block;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+/* ========== MOBILE NAV ========== */
+.mobile-nav{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  background:#020617;
+  border-top:1px solid #1e293b;
+}
+.mobile-nav button{
+  background:#38bdf8;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  font-weight:600;
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-<h3>📘 Python Topics</h3>
-<div id="toc"></div>
-</nav>
-
-<main>
 <header>
-<h1>Python by Vishvjit Goswami</h1>
-<p>Beginner To Advanced (Learning in Public)</p>
-<button id="themeToggle">🌙</button>
-<input id="search" placeholder="Search Python topic or code...">
-<div id="tags">
-<button data-tag="all">All</button>
-<button data-tag="basic">Basic</button>
-<button data-tag="core">Core</button>
-<button data-tag="oop">OOP</button>
-<button data-tag="advanced">Advanced</button>
-</div>
-<div id="progress"><div id="bar"></div></div>
+  <h3>🐍 Python Learning (Public)</h3>
+  <input id="search" class="search-box" placeholder="Search topic or code...">
+  <div class="tags">
+    <div class="tag active" data-tag="all">All</div>
+    <div class="tag" data-tag="basic">Basic</div>
+    <div class="tag" data-tag="core">Core</div>
+    <div class="tag" data-tag="oop">OOP</div>
+    <div class="tag" data-tag="adv">Advanced</div>
+  </div>
+  <small id="progress"></small>
 </header>
 
-<section id="content">
+<div class="container">
 
-<div class="card" id="hello" data-tags="basic">
-<h2>Hello World</h2>
-<pre><button class="copy">Copy</button><code>print("Hello World")</code></pre>
-</div>
+  <!-- TOC -->
+  <aside class="sidebar">
+    <h4>📑 Topics</h4>
+    <div id="toc"></div>
+  </aside>
 
-<div class="card" id="variables" data-tags="basic">
-<h2>Variables & Data Types</h2>
-<pre><button class="copy">Copy</button><code>x = 10
-y = 3.14
-name = "Python"
-is_ok = True</code></pre>
-</div>
+  <!-- CONTENT -->
+  <main id="content">
 
-<div class="card" id="input" data-tags="basic">
-<h2>Input / Output</h2>
-<pre><button class="copy">Copy</button><code>name = input("Enter name: ")
-print("Hello", name)</code></pre>
-</div>
+    <!-- CARD TEMPLATE -->
+    <div class="card" data-tag="basic">
+      <h2>Hello World</h2>
+      <button class="copy">Copy</button>
+      <pre>print("Hello World")</pre>
+    </div>
 
-<div class="card" id="ifelse" data-tags="core">
-<h2>If Else</h2>
-<pre><button class="copy">Copy</button><code>x = 5
-if x > 3:
-    print("Greater")
-else:
-    print("Smaller")</code></pre>
-</div>
+    <div class="card" data-tag="basic">
+      <h2>Variables</h2>
+      <button class="copy">Copy</button>
+      <pre>x = 10
+name = "Python"</pre>
+    </div>
 
-<div class="card" id="loops" data-tags="core">
-<h2>Loops</h2>
-<pre><button class="copy">Copy</button><code>for i in range(5):
-    print(i)
+    <div class="card" data-tag="core">
+      <h2>Loops</h2>
+      <button class="copy">Copy</button>
+      <pre>for i in range(5):
+    print(i)</pre>
+    </div>
 
-i = 1
-while i <= 3:
-    print(i)
-    i += 1</code></pre>
-</div>
+    <div class="card" data-tag="oop">
+      <h2>OOP</h2>
+      <button class="copy">Copy</button>
+      <pre>class Person:
+    def __init__(self,name):
+        self.name=name</pre>
+    </div>
 
-<div class="card" id="functions" data-tags="core">
-<h2>Functions</h2>
-<pre><button class="copy">Copy</button><code>def add(a, b):
-    return a + b
-
-print(add(3, 4))</code></pre>
-</div>
-
-<div class="card" id="collections" data-tags="core">
-<h2>List / Tuple / Set / Dict</h2>
-<pre><button class="copy">Copy</button><code>nums = [1,2,3]
-t = (1,2,3)
-s = {1,2,3}
-d = {"a":1,"b":2}</code></pre>
-</div>
-
-<div class="card" id="oop" data-tags="oop">
-<h2>OOP (Class & Object)</h2>
-<pre><button class="copy">Copy</button><code>class Person:
-    def __init__(self, name):
-        self.name = name
-
-p = Person("Ram")
-print(p.name)</code></pre>
-</div>
-
-<div class="card" id="inheritance" data-tags="oop">
-<h2>Inheritance</h2>
-<pre><button class="copy">Copy</button><code>class Parent:
-    def show(self):
-        print("Parent")
-
-class Child(Parent):
-    pass
-
-Child().show()</code></pre>
-</div>
-
-<div class="card" id="file" data-tags="advanced">
-<h2>File Handling</h2>
-<pre><button class="copy">Copy</button><code>with open("test.txt","w") as f:
-    f.write("Hello")
-
-with open("test.txt","r") as f:
-    print(f.read())</code></pre>
-</div>
-
-<div class="card" id="exception" data-tags="advanced">
-<h2>Exception Handling</h2>
-<pre><button class="copy">Copy</button><code>try:
-    x = int(input())
-    print(10/x)
-except Exception as e:
-    print("Error:", e)</code></pre>
-</div>
-
-<div class="card" id="lambda" data-tags="advanced">
-<h2>Lambda & Comprehension</h2>
-<pre><button class="copy">Copy</button><code>add = lambda a,b: a+b
-squares = [x*x for x in range(5)]</code></pre>
-</div>
-
-<div class="card" id="generator" data-tags="advanced">
-<h2>Generator</h2>
-<pre><button class="copy">Copy</button><code>def count(n):
-    for i in range(n):
-        yield i
-
-for x in count(3):
-    print(x)</code></pre>
-</div>
-
-<div class="card" id="decorator" data-tags="advanced">
-<h2>Decorator</h2>
-<pre><button class="copy">Copy</button><code>def deco(func):
+    <div class="card" data-tag="adv">
+      <h2>Decorator</h2>
+      <button class="copy">Copy</button>
+      <pre>def deco(fn):
     def wrap():
-        print("Before")
-        func()
-        print("After")
-    return wrap
+        fn()
+    return wrap</pre>
+    </div>
 
-@deco
-def hello():
-    print("Hello")
-
-hello()</code></pre>
+  </main>
 </div>
 
-<div class="card" id="thread" data-tags="advanced">
-<h2>Multithreading</h2>
-<pre><button class="copy">Copy</button><code>import threading
-
-def task():
-    print("Running")
-
-t = threading.Thread(target=task)
-t.start()</code></pre>
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <button id="prev">⬅ Prev</button>
+  <button id="next">Next ➡</button>
 </div>
-
-</section>
-
-<footer>© all rights reserved 2026</footer>
-</main>
 
 <script>
-document.querySelectorAll(".card").forEach(c=>{
-let a=document.createElement("a");
-a.href="#"+c.id;
-a.innerText=c.querySelector("h2").innerText;
-toc.appendChild(a)
+const cards=[...document.querySelectorAll(".card")];
+let visible=[...cards],idx=0;
+
+/* TOC */
+const toc=document.getElementById("toc");
+cards.forEach((c,i)=>{
+  c.id="t"+i;
+  toc.innerHTML+=`<a href="#t${i}">${c.querySelector("h2").innerText}</a>`;
 });
 
+/* COPY */
 document.querySelectorAll(".copy").forEach(b=>{
-b.onclick=()=>{
-navigator.clipboard.writeText(b.nextElementSibling.innerText);
-b.innerText="Copied";
-setTimeout(()=>b.innerText="Copy",1000)
-}});
+  b.onclick=()=>navigator.clipboard.writeText(
+    b.nextElementSibling.innerText
+  );
+});
 
+/* SEARCH (FUZZY) */
 search.oninput=e=>{
-let v=e.target.value.toLowerCase();
-document.querySelectorAll(".card").forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none"
-})
+  const q=e.target.value.toLowerCase();
+  visible=[];
+  cards.forEach(c=>{
+    const t=c.innerText.toLowerCase();
+    if(!q||t.includes(q)){
+      c.style.display="block";
+      visible.push(c);
+    }else c.style.display="none";
+  });
+  idx=0;saveProgress();
 };
 
-document.querySelectorAll("#tags button").forEach(b=>{
-b.onclick=()=>{
-let t=b.dataset.tag;
-document.querySelectorAll(".card").forEach(c=>{
-c.style.display=t=="all"||(c.dataset.tags||"").includes(t)?"block":"none"
-})
-}
+/* TAG FILTER */
+document.querySelectorAll(".tag").forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll(".tag").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    const tag=t.dataset.tag;
+    visible=[];
+    cards.forEach(c=>{
+      if(tag==="all"||c.dataset.tag===tag){
+        c.style.display="block";
+        visible.push(c);
+      }else c.style.display="none";
+    });
+    idx=0;saveProgress();
+  };
 });
 
-themeToggle.onclick=()=>document.body.classList.toggle("light");
+/* NAV */
+prev.onclick=()=>{if(idx>0)idx--;go();}
+next.onclick=()=>{if(idx<visible.length-1)idx++;go();}
+function go(){
+  visible[idx]?.scrollIntoView({behavior:"smooth"});
+  saveProgress();
+}
 
-let total=30;
-let done=document.querySelectorAll(".card").length;
-bar.style.width=Math.min(done/total*100,100)+"%";
+/* PROGRESS */
+function saveProgress(){
+  localStorage.setItem("pyProgress",idx);
+  progress.innerText=`Progress: ${idx+1}/${visible.length}`;
+}
+idx=+localStorage.getItem("pyProgress")||0;
+go();
 </script>
 
 </body>
