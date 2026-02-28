@@ -1,104 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>python book</title>
+<meta charset="UTF-8">
+<title>Python Roadmap</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-    }
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #020617;
+  --text: #e5e7eb;
+  --accent: #38bdf8;
+  --border: #1e293b;
+}
 
-    header {
-      padding: 20px;
-      text-align: center;
-      background: #020617;
-      border-bottom: 1px solid #1e293b;
-    }
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #020617;
+  --border: #cbd5e1;
+}
 
-    section {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+}
 
-    .card {
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 16px;
-    }
+/* TOC */
+nav {
+  width: 250px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
 
-    .card h2 {
-      margin: 0 0 10px;
-      color: #38bdf8;
-    }
+nav h2 {
+  color: var(--accent);
+  margin-top: 0;
+}
+
+nav a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Main */
+main {
+  margin-left: 250px;
+  padding: 25px;
+  max-width: 900px;
+}
+
+header h1 {
+  margin: 0;
+  color: var(--accent);
+}
+
+#search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 15px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+}
+
+#tags button, #themeToggle {
+  margin: 5px 5px 0 0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+#tags button:hover, #themeToggle:hover {
+  background: var(--accent);
+  color: #020617;
+}
+
+/* Progress */
+#progress {
+  width: 100%;
+  height: 8px;
+  background: var(--border);
+  border-radius: 10px;
+  margin: 15px 0;
+}
+#bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
 pre {
-  background: #020617;
+  background: var(--bg);
   padding: 12px;
   border-radius: 6px;
   overflow-x: auto;
-  color: #e5e7eb;
+  position: relative;
 }
-    footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-  </style>
+
+.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+@media (max-width: 800px) {
+  nav { display: none; }
+  main { margin-left: 0; }
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>🐍 Python Book</h1>
-    <p>by- vishvjit goswami (dev)</p>
-  </header>
+<nav>
+  <h2>📘 Days</h2>
+  <div id="toc"></div>
+</nav>
 
-  <section id="content">
-    <div class="card">
-      <h2>Day 1: Hello World</h2>
-      <pre>
-        print("Hello, World!")
-      </pre>
-    </div>
+<main>
+<header>
+  <h1>🐍 Students Topics</h1>
+  <p>Python by Vishvjit Goswami</p>
 
+  <button id="themeToggle">🌙</button>
 
-<div class="card">
-  <h2>Day 2: Variables</h2>
-  <pre>
-    name = "vishvjit goswami" (this is string)
-    age = 28 (this is int)
-    height = 5.10 (this is flot)
-    married = True (this is boolean)
-  </pre>
+  <input id="search" type="text" placeholder="Search topic or code...">
+
+  <div id="tags">
+    <button data-tag="all">All</button>
+    <button data-tag="basics">Basics</button>
+    <button data-tag="condition">Condition</button>
+    <button data-tag="loops">Loops</button>
+  </div>
+
+  <div id="progress"><div id="bar"></div></div>
+</header>
+
+<section id="content">
+
+<div class="card" id="day-1" data-tags="basics">
+<h2>Day 1: Hello World</h2>
+<pre><button class="copy">Copy</button><code>print("Hello, World!")</code></pre>
 </div>
 
-<div class="card">
-  <h2>Day 3: If Else</h2>
-  <pre>
-x = 5
+<div class="card" id="day-2" data-tags="basics">
+<h2>Day 2: Variables</h2>
+<pre><button class="copy">Copy</button><code>x = 10
+name = "Python"
+print(x, name)</code></pre>
+</div>
+
+<div class="card" id="day-3" data-tags="condition">
+<h2>Day 3: If Else</h2>
+<pre><button class="copy">Copy</button><code>x = 5
 if x > 3:
     print("Greater")
 else:
-    print("Smaller")
-  </pre>
+    print("Smaller")</code></pre>
 </div>
 
+<div class="card" id="day-4" data-tags="basics">
+<h2>Day 4: Notes (Markdown)</h2>
+<div class="md">
+**Bold text**
 
+- item one
+- item two
 
+`print("Markdown supported")`
+</div>
+</div>
 
-      
-  </section>
+</section>
 
- <footer>
-  © 2026 • Book by vishvjit goswami
- </footer>
+<footer>
+© all rights reserved 2026
+</footer>
+</main>
+
+<script>
+/* TOC */
+document.querySelectorAll(".card").forEach(c => {
+  const a = document.createElement("a");
+  a.href = "#" + c.id;
+  a.innerText = c.querySelector("h2").innerText;
+  document.getElementById("toc").appendChild(a);
+});
+
+/* Copy */
+document.querySelectorAll(".copy").forEach(b => {
+  b.onclick = () => {
+    navigator.clipboard.writeText(b.nextElementSibling.innerText);
+    b.innerText = "Copied!";
+    setTimeout(() => b.innerText = "Copy", 1000);
+  };
+});
+
+/* Search */
+document.getElementById("search").oninput = e => {
+  const v = e.target.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c => {
+    c.style.display = c.innerText.toLowerCase().includes(v) ? "block" : "none";
+  });
+};
+
+/* Tags */
+document.querySelectorAll("#tags button").forEach(b => {
+  b.onclick = () => {
+    const t = b.dataset.tag;
+    document.querySelectorAll(".card").forEach(c => {
+      c.style.display = t === "all" || (c.dataset.tags || "").includes(t)
+        ? "block" : "none";
+    });
+  };
+});
+
+/* Theme */
+document.getElementById("themeToggle").onclick = () => {
+  document.body.classList.toggle("light");
+};
+
+/* Markdown */
+document.querySelectorAll(".md").forEach(el => {
+  let h = el.innerText
+    .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
+    .replace(/`(.*?)`/g, "<code>$1</code>")
+    .replace(/^- (.*)$/gm, "<li>$1</li>");
+  el.innerHTML = h;
+});
+
+/* Progress */
+const total = 30;
+const done = document.querySelectorAll(".card").length;
+document.getElementById("bar").style.width =
+  Math.min((done / total) * 100, 100) + "%";
+</script>
 
 </body>
 </html>
