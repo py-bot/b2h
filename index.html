@@ -2,203 +2,87 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Python Roadmap</title>
+<title>Complete Python Learning Blog</title>
 
 <style>
-:root {
-  --bg: #0f172a;
-  --card: #020617;
-  --text: #e5e7eb;
-  --accent: #38bdf8;
-  --border: #1e293b;
-}
-
-.light {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #020617;
-  --border: #cbd5e1;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-}
-
-/* TOC */
-nav {
-  width: 250px;
-  background: var(--card);
-  border-right: 1px solid var(--border);
-  padding: 20px;
-  position: fixed;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-nav h2 {
-  color: var(--accent);
-  margin-top: 0;
-}
-
-nav a {
-  display: block;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 14px;
-  margin-bottom: 6px;
-}
-
-nav a:hover {
-  color: var(--accent);
-}
-
-/* Main */
-main {
-  margin-left: 250px;
-  padding: 25px;
-  max-width: 900px;
-}
-
-header h1 {
-  margin: 0;
-  color: var(--accent);
-}
-
-#search {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 15px 0;
-  background: var(--card);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 6px;
-}
-
-#tags button, #themeToggle {
-  margin: 5px 5px 0 0;
-  padding: 6px 12px;
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-  cursor: pointer;
-}
-
-#tags button:hover, #themeToggle:hover {
-  background: var(--accent);
-  color: #020617;
-}
-
-/* Progress */
-#progress {
-  width: 100%;
-  height: 8px;
-  background: var(--border);
-  border-radius: 10px;
-  margin: 15px 0;
-}
-#bar {
-  height: 100%;
-  width: 0%;
-  background: var(--accent);
-  border-radius: 10px;
-}
-
-/* Cards */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px;
-}
-
-.card h2 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-pre {
-  background: var(--bg);
-  padding: 12px;
-  border-radius: 6px;
-  overflow-x: auto;
-  position: relative;
-}
-
-.copy {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: var(--accent);
-  border: none;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-footer {
-  text-align: center;
-  margin: 40px 0 10px;
-  font-size: 14px;
-  color: #94a3b8;
-}
-
-@media (max-width: 800px) {
-  nav { display: none; }
-  main { margin-left: 0; }
-}
+:root{
+--bg:#0f172a;--card:#020617;--text:#e5e7eb;
+--accent:#38bdf8;--border:#1e293b}
+.light{
+--bg:#f8fafc;--card:#ffffff;--text:#020617;--border:#cbd5e1}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--text);display:flex}
+nav{width:240px;position:fixed;height:100vh;overflow:auto;
+background:var(--card);border-right:1px solid var(--border);padding:16px}
+nav h3{margin-top:0;color:var(--accent)}
+nav a{display:block;color:var(--text);font-size:13px;margin-bottom:6px;text-decoration:none}
+nav a:hover{color:var(--accent)}
+main{margin-left:240px;padding:20px;max-width:1000px}
+header h1{margin:0;color:var(--accent)}
+#search{width:100%;max-width:420px;padding:10px;margin:10px 0;
+background:var(--card);border:1px solid var(--border);color:var(--text)}
+#tags button,#themeToggle{
+margin:4px;padding:6px 12px;border-radius:20px;
+border:1px solid var(--border);background:var(--card);color:var(--text)}
+#tags button:hover,#themeToggle:hover{background:var(--accent);color:#020617}
+#progress{height:8px;background:var(--border);border-radius:10px;margin:12px 0}
+#bar{height:100%;width:0;background:var(--accent);border-radius:10px}
+.card{background:var(--card);border:1px solid var(--border);
+border-radius:8px;padding:16px;margin-bottom:20px}
+.card h2{margin-top:0;color:var(--accent)}
+pre{background:var(--bg);padding:12px;border-radius:6px;overflow:auto;position:relative}
+.copy{position:absolute;top:8px;right:8px;background:var(--accent);
+border:none;padding:4px 8px;border-radius:4px;font-size:12px;cursor:pointer}
+footer{text-align:center;margin:40px 0;font-size:14px;color:#94a3b8}
+@media(max-width:800px){nav{display:none}main{margin-left:0}}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <h2>📘 Days</h2>
-  <div id="toc"></div>
+<h3>📘 Python Topics</h3>
+<div id="toc"></div>
 </nav>
 
 <main>
 <header>
-  <h1>🐍 Students Topics</h1>
-  <p>Python by Vishvjit Goswami</p>
-
-  <button id="themeToggle">🌙</button>
-
-  <input id="search" type="text" placeholder="Search topic or code...">
-
-  <div id="tags">
-    <button data-tag="all">All</button>
-    <button data-tag="basics">Basics</button>
-    <button data-tag="condition">Condition</button>
-    <button data-tag="loops">Loops</button>
-  </div>
-
-  <div id="progress"><div id="bar"></div></div>
+<h1>Python by Vishvjit Goswami</h1>
+<p>Beginner To Advanced (Learning in Public)</p>
+<button id="themeToggle">🌙</button>
+<input id="search" placeholder="Search Python topic or code...">
+<div id="tags">
+<button data-tag="all">All</button>
+<button data-tag="basic">Basic</button>
+<button data-tag="core">Core</button>
+<button data-tag="oop">OOP</button>
+<button data-tag="advanced">Advanced</button>
+</div>
+<div id="progress"><div id="bar"></div></div>
 </header>
 
 <section id="content">
 
-<div class="card" id="day-1" data-tags="basics">
-<h2>Day 1: Hello World</h2>
-<pre><button class="copy">Copy</button><code>print("Hello, World!")</code></pre>
+<div class="card" id="hello" data-tags="basic">
+<h2>Hello World</h2>
+<pre><button class="copy">Copy</button><code>print("Hello World")</code></pre>
 </div>
 
-<div class="card" id="day-2" data-tags="basics">
-<h2>Day 2: Variables</h2>
+<div class="card" id="variables" data-tags="basic">
+<h2>Variables & Data Types</h2>
 <pre><button class="copy">Copy</button><code>x = 10
+y = 3.14
 name = "Python"
-print(x, name)</code></pre>
+is_ok = True</code></pre>
 </div>
 
-<div class="card" id="day-3" data-tags="condition">
-<h2>Day 3: If Else</h2>
+<div class="card" id="input" data-tags="basic">
+<h2>Input / Output</h2>
+<pre><button class="copy">Copy</button><code>name = input("Enter name: ")
+print("Hello", name)</code></pre>
+</div>
+
+<div class="card" id="ifelse" data-tags="core">
+<h2>If Else</h2>
 <pre><button class="copy">Copy</button><code>x = 5
 if x > 3:
     print("Greater")
@@ -206,81 +90,157 @@ else:
     print("Smaller")</code></pre>
 </div>
 
-<div class="card" id="day-4" data-tags="basics">
-<h2>Day 4: Notes (Markdown)</h2>
-<div class="md">
-**Bold text**
+<div class="card" id="loops" data-tags="core">
+<h2>Loops</h2>
+<pre><button class="copy">Copy</button><code>for i in range(5):
+    print(i)
 
-- item one
-- item two
-
-`print("Markdown supported")`
+i = 1
+while i <= 3:
+    print(i)
+    i += 1</code></pre>
 </div>
+
+<div class="card" id="functions" data-tags="core">
+<h2>Functions</h2>
+<pre><button class="copy">Copy</button><code>def add(a, b):
+    return a + b
+
+print(add(3, 4))</code></pre>
+</div>
+
+<div class="card" id="collections" data-tags="core">
+<h2>List / Tuple / Set / Dict</h2>
+<pre><button class="copy">Copy</button><code>nums = [1,2,3]
+t = (1,2,3)
+s = {1,2,3}
+d = {"a":1,"b":2}</code></pre>
+</div>
+
+<div class="card" id="oop" data-tags="oop">
+<h2>OOP (Class & Object)</h2>
+<pre><button class="copy">Copy</button><code>class Person:
+    def __init__(self, name):
+        self.name = name
+
+p = Person("Ram")
+print(p.name)</code></pre>
+</div>
+
+<div class="card" id="inheritance" data-tags="oop">
+<h2>Inheritance</h2>
+<pre><button class="copy">Copy</button><code>class Parent:
+    def show(self):
+        print("Parent")
+
+class Child(Parent):
+    pass
+
+Child().show()</code></pre>
+</div>
+
+<div class="card" id="file" data-tags="advanced">
+<h2>File Handling</h2>
+<pre><button class="copy">Copy</button><code>with open("test.txt","w") as f:
+    f.write("Hello")
+
+with open("test.txt","r") as f:
+    print(f.read())</code></pre>
+</div>
+
+<div class="card" id="exception" data-tags="advanced">
+<h2>Exception Handling</h2>
+<pre><button class="copy">Copy</button><code>try:
+    x = int(input())
+    print(10/x)
+except Exception as e:
+    print("Error:", e)</code></pre>
+</div>
+
+<div class="card" id="lambda" data-tags="advanced">
+<h2>Lambda & Comprehension</h2>
+<pre><button class="copy">Copy</button><code>add = lambda a,b: a+b
+squares = [x*x for x in range(5)]</code></pre>
+</div>
+
+<div class="card" id="generator" data-tags="advanced">
+<h2>Generator</h2>
+<pre><button class="copy">Copy</button><code>def count(n):
+    for i in range(n):
+        yield i
+
+for x in count(3):
+    print(x)</code></pre>
+</div>
+
+<div class="card" id="decorator" data-tags="advanced">
+<h2>Decorator</h2>
+<pre><button class="copy">Copy</button><code>def deco(func):
+    def wrap():
+        print("Before")
+        func()
+        print("After")
+    return wrap
+
+@deco
+def hello():
+    print("Hello")
+
+hello()</code></pre>
+</div>
+
+<div class="card" id="thread" data-tags="advanced">
+<h2>Multithreading</h2>
+<pre><button class="copy">Copy</button><code>import threading
+
+def task():
+    print("Running")
+
+t = threading.Thread(target=task)
+t.start()</code></pre>
 </div>
 
 </section>
 
-<footer>
-© all rights reserved 2026
-</footer>
+<footer>© all rights reserved 2026</footer>
 </main>
 
 <script>
-/* TOC */
-document.querySelectorAll(".card").forEach(c => {
-  const a = document.createElement("a");
-  a.href = "#" + c.id;
-  a.innerText = c.querySelector("h2").innerText;
-  document.getElementById("toc").appendChild(a);
+document.querySelectorAll(".card").forEach(c=>{
+let a=document.createElement("a");
+a.href="#"+c.id;
+a.innerText=c.querySelector("h2").innerText;
+toc.appendChild(a)
 });
 
-/* Copy */
-document.querySelectorAll(".copy").forEach(b => {
-  b.onclick = () => {
-    navigator.clipboard.writeText(b.nextElementSibling.innerText);
-    b.innerText = "Copied!";
-    setTimeout(() => b.innerText = "Copy", 1000);
-  };
-});
+document.querySelectorAll(".copy").forEach(b=>{
+b.onclick=()=>{
+navigator.clipboard.writeText(b.nextElementSibling.innerText);
+b.innerText="Copied";
+setTimeout(()=>b.innerText="Copy",1000)
+}});
 
-/* Search */
-document.getElementById("search").oninput = e => {
-  const v = e.target.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(c => {
-    c.style.display = c.innerText.toLowerCase().includes(v) ? "block" : "none";
-  });
+search.oninput=e=>{
+let v=e.target.value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none"
+})
 };
 
-/* Tags */
-document.querySelectorAll("#tags button").forEach(b => {
-  b.onclick = () => {
-    const t = b.dataset.tag;
-    document.querySelectorAll(".card").forEach(c => {
-      c.style.display = t === "all" || (c.dataset.tags || "").includes(t)
-        ? "block" : "none";
-    });
-  };
+document.querySelectorAll("#tags button").forEach(b=>{
+b.onclick=()=>{
+let t=b.dataset.tag;
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=t=="all"||(c.dataset.tags||"").includes(t)?"block":"none"
+})
+}
 });
 
-/* Theme */
-document.getElementById("themeToggle").onclick = () => {
-  document.body.classList.toggle("light");
-};
+themeToggle.onclick=()=>document.body.classList.toggle("light");
 
-/* Markdown */
-document.querySelectorAll(".md").forEach(el => {
-  let h = el.innerText
-    .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>")
-    .replace(/`(.*?)`/g, "<code>$1</code>")
-    .replace(/^- (.*)$/gm, "<li>$1</li>");
-  el.innerHTML = h;
-});
-
-/* Progress */
-const total = 30;
-const done = document.querySelectorAll(".card").length;
-document.getElementById("bar").style.width =
-  Math.min((done / total) * 100, 100) + "%";
+let total=30;
+let done=document.querySelectorAll(".card").length;
+bar.style.width=Math.min(done/total*100,100)+"%";
 </script>
 
 </body>
