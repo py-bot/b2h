@@ -6,150 +6,163 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-body{margin:0;font-family:system-ui;background:#020617;color:#e5e7eb}
-header{position:sticky;top:0;background:#020617;padding:12px;border-bottom:1px solid #1e293b;z-index:99}
-.container{display:flex}
-.sidebar{width:240px;padding:12px;border-right:1px solid #1e293b}
-main{flex:1;padding:12px}
-@media(max-width:768px){.container{flex-direction:column}.sidebar{width:100%}}
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#020617;
+  color:#e5e7eb;
+}
+header{
+  padding:14px;
+  border-bottom:1px solid #1e293b;
+}
+h2{margin:0}
+.container{padding:16px}
 
-.search{width:100%;padding:8px;border-radius:6px;border:1px solid #1e293b;background:#020617;color:#e5e7eb}
+/* TOPIC LIST */
+.topic{
+  border:1px solid #1e293b;
+  border-radius:8px;
+  padding:14px;
+  margin-bottom:12px;
+  cursor:pointer;
+  background:#020617;
+}
+.topic:hover{border-color:#38bdf8}
 
-.card{border:1px solid #1e293b;border-radius:8px;padding:12px;margin-bottom:14px}
-pre{background:#020617;border:1px solid #1e293b;padding:10px;overflow-x:auto}
-.copy{float:right;background:#38bdf8;border:none;padding:4px 8px;border-radius:4px;cursor:pointer}
-
-.mobile-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:8px;background:#020617;border-top:1px solid #1e293b}
-.mobile-nav button{background:#38bdf8;border:none;padding:8px 14px;border-radius:6px;font-weight:600}
+/* CONTENT PAGE */
+.content{
+  display:none;
+}
+pre{
+  background:#020617;
+  border:1px solid #1e293b;
+  padding:12px;
+  overflow-x:auto;
+}
+button{
+  background:#38bdf8;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+  margin-bottom:14px;
+}
+.copy{
+  float:right;
+  padding:4px 8px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h3>🐍 Python Learning (Public)</h3>
-<input id="search" class="search" placeholder="Search topic or code">
-<small id="progress"></small>
+<h2>🐍 Python Topics (Click to Learn)</h2>
 </header>
 
-<div class="container">
-<aside class="sidebar">
-<h4>📑 Topics</h4>
-<div id="toc"></div>
-</aside>
+<div class="container" id="topicList">
 
-<main id="content">
+  <div class="topic" onclick="openTopic('hello')">Hello World</div>
+  <div class="topic" onclick="openTopic('variables')">Variables & Data Types</div>
+  <div class="topic" onclick="openTopic('input')">Input / Output</div>
+  <div class="topic" onclick="openTopic('ifelse')">If Else</div>
+  <div class="topic" onclick="openTopic('loops')">Loops</div>
+  <div class="topic" onclick="openTopic('list')">List</div>
+  <div class="topic" onclick="openTopic('tuple')">Tuple</div>
+  <div class="topic" onclick="openTopic('set')">Set</div>
+  <div class="topic" onclick="openTopic('dict')">Dictionary</div>
+  <div class="topic" onclick="openTopic('function')">Functions</div>
+  <div class="topic" onclick="openTopic('oop')">OOP</div>
+  <div class="topic" onclick="openTopic('file')">File Handling</div>
+  <div class="topic" onclick="openTopic('exception')">Exception Handling</div>
 
-<!-- BASIC -->
-<div class="card"><h2>Hello World</h2><button class="copy">Copy</button><pre>print("Hello World")</pre></div>
-
-<div class="card"><h2>Variables</h2><button class="copy">Copy</button><pre>x = 10
-name = "Python"</pre></div>
-
-<div class="card"><h2>Data Types</h2><button class="copy">Copy</button><pre>i = 10
-f = 2.5
-b = True
-s = "text"</pre></div>
-
-<div class="card"><h2>Input / Output</h2><button class="copy">Copy</button><pre>name = input("Enter name: ")
-print("Hello", name)</pre></div>
-
-<div class="card"><h2>Type Casting</h2><button class="copy">Copy</button><pre>x = int("10")
-y = float("2.5")</pre></div>
-
-<!-- CONTROL FLOW -->
-<div class="card"><h2>If Else</h2><button class="copy">Copy</button><pre>if x > 5:
-    print("Greater")
-else:
-    print("Smaller")</pre></div>
-
-<div class="card"><h2>Loops</h2><button class="copy">Copy</button><pre>for i in range(5):
-    print(i)
-
-while x > 0:
-    x -= 1</pre></div>
-
-<div class="card"><h2>Break / Continue</h2><button class="copy">Copy</button><pre>for i in range(5):
-    if i == 3:
-        break</pre></div>
-
-<!-- DATA STRUCTURES -->
-<div class="card"><h2>List</h2><button class="copy">Copy</button><pre>nums = [1,2,3]
-nums.append(4)</pre></div>
-
-<div class="card"><h2>Tuple</h2><button class="copy">Copy</button><pre>t = (1,2,3)</pre></div>
-
-<div class="card"><h2>Set</h2><button class="copy">Copy</button><pre>s = {1,2,3}</pre></div>
-
-<div class="card"><h2>Dictionary</h2><button class="copy">Copy</button><pre>d = {"a":1,"b":2}</pre></div>
-
-<!-- FUNCTIONS -->
-<div class="card"><h2>Functions</h2><button class="copy">Copy</button><pre>def add(a,b):
-    return a+b</pre></div>
-
-<div class="card"><h2>Lambda</h2><button class="copy">Copy</button><pre>add = lambda a,b: a+b</pre></div>
-
-<!-- OOP -->
-<div class="card"><h2>Class & Object</h2><button class="copy">Copy</button><pre>class Person:
-    def __init__(self,name):
-        self.name=name</pre></div>
-
-<div class="card"><h2>Inheritance</h2><button class="copy">Copy</button><pre>class A: pass
-class B(A): pass</pre></div>
-
-<!-- ADVANCED -->
-<div class="card"><h2>Exception Handling</h2><button class="copy">Copy</button><pre>try:
-    x=1/0
-except Exception as e:
-    print(e)</pre></div>
-
-<div class="card"><h2>File Handling</h2><button class="copy">Copy</button><pre>with open("a.txt","w") as f:
-    f.write("Hello")</pre></div>
-
-<div class="card"><h2>List Comprehension</h2><button class="copy">Copy</button><pre>squares = [x*x for x in range(5)]</pre></div>
-
-<div class="card"><h2>Generator</h2><button class="copy">Copy</button><pre>def gen():
-    yield 1
-    yield 2</pre></div>
-
-<div class="card"><h2>Decorator</h2><button class="copy">Copy</button><pre>def deco(fn):
-    def wrap():
-        fn()
-    return wrap</pre></div>
-
-</main>
 </div>
 
-<div class="mobile-nav">
-<button id="prev">⬅ Prev</button>
-<button id="next">Next ➡</button>
+<!-- CONTENT SECTIONS -->
+<div class="container content" id="content">
+
+<button onclick="goBack()">⬅ Back to Topics</button>
+
+<h2 id="title"></h2>
+<button class="copy" onclick="copyCode()">Copy</button>
+<pre id="code"></pre>
+
 </div>
 
 <script>
-const cards=[...document.querySelectorAll(".card")];
-const toc=document.getElementById("toc");
-let idx=0;
+const data={
+  hello:`print("Hello World")`,
 
-cards.forEach((c,i)=>{
-  c.id="t"+i;
-  toc.innerHTML+=`<a href="#t${i}">${c.querySelector("h2").innerText}</a><br>`;
-});
+  variables:`x = 10
+y = 2.5
+name = "Python"
+is_ok = True`,
 
-document.querySelectorAll(".copy").forEach(b=>{
-  b.onclick=()=>navigator.clipboard.writeText(b.nextElementSibling.innerText);
-});
+  input:`name = input("Enter name: ")
+print("Hello", name)`,
 
-search.oninput=e=>{
-  const q=e.target.value.toLowerCase();
-  cards.forEach(c=>{
-    c.style.display=c.innerText.toLowerCase().includes(q)?"block":"none";
-  });
+  ifelse:`x = 5
+if x > 3:
+    print("Greater")
+else:
+    print("Smaller")`,
+
+  loops:`for i in range(5):
+    print(i)
+
+i = 1
+while i <= 3:
+    print(i)
+    i += 1`,
+
+  list:`nums = [1,2,3]
+nums.append(4)`,
+
+  tuple:`t = (1,2,3)`,
+
+  set:`s = {1,2,3}`,
+
+  dict:`d = {"a":1,"b":2}`,
+
+  function:`def add(a,b):
+    return a+b
+
+print(add(3,4))`,
+
+  oop:`class Person:
+    def __init__(self,name):
+        self.name=name
+
+p = Person("Ram")`,
+
+  file:`with open("test.txt","w") as f:
+    f.write("Hello")`,
+
+  exception:`try:
+    x = 1/0
+except Exception as e:
+    print(e)`
 };
 
-prev.onclick=()=>{if(idx>0)cards[--idx].scrollIntoView({behavior:"smooth"})}
-next.onclick=()=>{if(idx<cards.length-1)cards[++idx].scrollIntoView({behavior:"smooth"})}
+function openTopic(key){
+  document.getElementById("topicList").style.display="none";
+  document.getElementById("content").style.display="block";
+  document.getElementById("title").innerText=key.toUpperCase();
+  document.getElementById("code").innerText=data[key];
+}
 
-progress.innerText=`Total Topics: ${cards.length}`;
+function goBack(){
+  document.getElementById("content").style.display="none";
+  document.getElementById("topicList").style.display="block";
+}
+
+function copyCode(){
+  navigator.clipboard.writeText(
+    document.getElementById("code").innerText
+  );
+}
 </script>
 
 </body>
